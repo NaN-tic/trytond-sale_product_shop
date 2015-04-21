@@ -1,0 +1,7 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.sale:"
+msgid "Product %s is not available for its sale in shop %s."
+msgstr "El producto %s no está disponible para su venta en la tienda %s."
