@@ -36,8 +36,8 @@ class Sale:
             return
 
         for sale in sales:
-            templates = [l.product.template for s in sales for l in s.lines
-                if l.product]
+            templates = list({l.product.template for s in sales
+                for l in s.lines if l.product})
             shop_products = ProductShop.search([('template', 'in', templates)])
             products = [p for sp in shop_products
                 for p in sp.template.products]
