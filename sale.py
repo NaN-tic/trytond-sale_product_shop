@@ -23,8 +23,17 @@ class Sale:
         super(Sale, cls).quote(sales)
 
     @classmethod
+    def check_product_shop(cls):
+        if Transaction().context.get('without_warning'):
+            return False
+        return True
+
+    @classmethod
     def available_in_shop(cls, sales):
         ProductShop = Pool().get('product.template-sale.shop')
+
+        if not cls.check_product_shop():
+            return
 
         for sale in sales:
             shop_products = ProductShop.search([('shop', '=', sale.shop)])
