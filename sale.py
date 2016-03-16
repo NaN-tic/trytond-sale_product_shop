@@ -43,7 +43,8 @@ class Sale:
             products = [p for sp in shop_products
                 for p in sp.template.products]
             for line in sale.lines:
-                if line.type == 'line' and line.product not in products:
+                if (line.type == 'line' and line.product
+                        and line.product not in products):
                     cls.raise_user_warning(
                         'not_available_in_shop_%s' % line.id,
                         'not_available_in_shop',
